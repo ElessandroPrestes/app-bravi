@@ -9,17 +9,20 @@ use App\Models\Physical_Person;
 
 class Person extends Model
 {
-    protected $table = 'person';
 
-    protected $fillable = ['name', 'address', 'number', 'zipcode', 'city', 'uf'];
+    use HasFactory;
+    
+    protected $table = 'persons';
+    
+    protected $fillable = ['name', 'address', 'number', 'zipcode', 'city', 'UF'];
 
-   public function Contacts()
+   public function contacts()
    {
-    return $this->hasMany(Contact::class);
+    return $this->hasMany(Contact::class, 'person_id');
    }
    
-   public function Physical_Persons()
+   public function physicalPersons()
    {
-    return $this->hasMany(Physical_Person::class);
+    return $this->hasOne(PhysicalPerson::class, 'person_id');
    }
 }

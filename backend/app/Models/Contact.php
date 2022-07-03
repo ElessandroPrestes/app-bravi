@@ -8,11 +8,13 @@ use App\Models\Person;
 
 class Contact extends Model
 {
-    protected $table = 'contact';
+    use HasFactory;
+
+    protected $table = 'contacts';
 
     protected $fillable = ['email', 'whatsapp', 'telefone', 'person_id'];
 
-    public function Person()
+    public function person()
     {
         return $this->belongsTo(Person::class);
     }

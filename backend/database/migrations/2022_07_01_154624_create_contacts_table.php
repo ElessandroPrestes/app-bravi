@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePhysicalPersonTable extends Migration
+class CreateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreatePhysicalPersonTable extends Migration
      */
     public function up()
     {
-        Schema::create('physical_person', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->char('cpf', 11);
-            $table->dateTime('birth_date');
-            $table->char('sex', 1);
+            $table->string('email', 100)->unique()->nullable();
+            $table->string('whatsapp', 14)->unique()->nullable();
+            $table->string('phone', 14)->unique()->nullable();
             $table->unsignedBigInteger('person_id')->unsigned();
             $table->foreign('person_id')
-            ->references('id')->on('person')->onDelete('cascade');
+            ->references('id')->on('persons')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreatePhysicalPersonTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('physical_person');
+        Schema::dropIfExists('contacts');
     }
 }

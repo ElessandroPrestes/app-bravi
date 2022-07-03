@@ -1,13 +1,17 @@
 <?php
 
-use App\Http\Controllers\api\PersonController;
-use App\Models\Person;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\PersonController;
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::get('/register', [PersonController::class, 'store'] );
+
+Route::apiResource('/person', PersonController::class)
+    ->only(['index','show', 'store', 'update', 'destroy']);
+
+Route::apiResource('/contact', ContatcController::class)
+    ->only(['index','show', 'store', 'update', 'destroy']);
+    
+Route::apiResource('/physicalperson', PhysicalPersonController::class)
+    ->only(['index','show', 'store', 'update', 'destroy']);
