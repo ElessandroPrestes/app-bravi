@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Person;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ContactFactory extends Factory
@@ -17,7 +18,9 @@ class ContactFactory extends Factory
             'email' => $this->faker->email(),
             'whatsapp' => $this->faker->tollFreePhoneNumber(),
             'phone' => $this->faker->tollFreePhoneNumber(),
-            'person_id' => rand(1, 20),   
+            'person_id' => function(){
+                return Person::factory()->create()->id;
+            }  
         ];
     }
 }

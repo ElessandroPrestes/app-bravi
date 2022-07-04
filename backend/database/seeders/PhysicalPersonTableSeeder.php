@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Physical_Person;
 use Illuminate\Database\Seeder;
+use App\Models\PhysicalPerson;
 
-class Physical_PersonTableSeeder extends Seeder
+class PhysicalPersonTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class Physical_PersonTableSeeder extends Seeder
      */
     public function run()
     {
-        Physical_Person::factory()->count(20)->create();
+        PhysicalPerson::factory()->count(20)->create();
     }
 }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Contact;
-use App\Models\Physical_Person;
+use App\Models\PhysicalPerson;
 
 class Person extends Model
 {
